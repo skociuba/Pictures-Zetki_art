@@ -64,7 +64,7 @@ const Contact = () => {
 
         <input
           type="submit"
-          value="Wyślij"
+          value="Send Message"
           className="border shadow-lg p-3 w-full mt-2"
         />
       </form>

@@ -11,7 +11,7 @@ export default function Home() {
         <meta name='description' content='Handmade pictures,manga' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <Hero heading='Pictures' message='by Zetki art' />
+      <Hero heading='Projects' message='by Zetki art' />
       <Slider slides={SliderData} />
     </div>
   );

@@ -1,6 +1,6 @@
 import manga1 from "../public/manga1.jpg"
+import manga2 from "../public/manga2.jpg"
 import manga3 from "../public/manga3.jpg"
-import manga4 from "../public/manga4.jpg"
 import manga5 from "../public/manga5.jpg"
 import manga6 from "../public/manga6.jpg"
 import manga7 from "../public/manga7.jpg"
@@ -17,11 +17,11 @@ export const SliderData = [
     portrait: true,
   },
   {
-    image: manga3,
+    image: manga2,
     portrait: true,
   },
   {
-    image: manga4,
+    image: manga3,
     portrait: true,
   },
   {
