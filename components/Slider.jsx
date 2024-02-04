@@ -1,11 +1,30 @@
 import Image from "next/image"
-import React, { useState } from "react"
-import { SliderData } from "./SliderData"
+import React, { useState, useEffect } from "react"
 import { FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa"
 
-const Slider = ({ slides }) => {
+const Slider = () => {
+  const [images, setImages] = useState([])
   const [current, setCurrent] = useState(0)
-  const length = slides.length
+  const length = images.length
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const response = await fetch("/api/download/route")
+
+        if (response.ok) {
+          const data = await response.json()
+          setImages(data)
+        } else {
+          console.error("Błąd pobierania listy obrazów:", response.statusText)
+        }
+      } catch (error) {
+        console.error("Błąd pobierania listy obrazów:", error)
+      }
+    }
+
+    fetchImages()
+  }, [])
 
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1)
@@ -14,14 +33,14 @@ const Slider = ({ slides }) => {
     setCurrent(current === 0 ? length - 1 : current - 1)
   }
 
-  if (!Array.isArray(slides) || slides.length <= 0) {
+  if (!Array.isArray(images) || images.length <= 0) {
     return null
   }
 
   return (
     <div id="gallery" className="max-w-[1240px] mx-auto">
       <div className="relative flex justify-center p-4">
-        {SliderData.map((slide, index) => {
+        {images?.map((slide, index) => {
           return (
             <div
               key={index}
@@ -38,9 +57,9 @@ const Slider = ({ slides }) => {
               />
               {index === current && (
                 <Image
-                  src={slide.image}
+                  src={slide?.url}
                   alt="/"
-                  width={slide.portrait ? "400" : "1440"}
+                  width= "400"
                   height="600"
                   objectFit="cover"
                 />

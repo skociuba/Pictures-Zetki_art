@@ -6,7 +6,9 @@ const nextConfig = {
 module.exports = {
   images: {
     domains: [
-      'images.unsplash.com',
-    ]
-  }
+      "images.unsplash.com",
+      "public.blob.vercel-storage.com",
+      "yyjqiojfl2pdxtvx.public.blob.vercel-storage.com",
+    ],
+  },
 }

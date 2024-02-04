@@ -47,6 +47,12 @@ const Navbar = () => {
           <li className="p-4">
             <Link href="/contact">Contact</Link>
           </li>
+          <li className="p-4">
+            <Link href="/upload">Upload</Link>
+          </li>
+          <li className="p-4">
+            <Link href="/display">Remove</Link>
+          </li>
         </ul>
 
         {/* Mobile Button */}
