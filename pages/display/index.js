@@ -1,6 +1,7 @@
 "use client"
 import { useState, useEffect } from "react"
 import Image from "next/image"
+
 const Importer = () => {
   const [images, setImages] = useState([])
 
@@ -22,19 +23,37 @@ const Importer = () => {
 
     fetchImages()
   }, [])
-  
+
   return (
-    <div>
-      <h2>Galeria Obrazów</h2>
+    <div className="mt-20">
       {images?.map((image) => (
-        <div key={image.url}>
-          <Image
-            src={image.url}
-            alt="GitHub Logo"
-            width={400}
-            height={600}
-            priority
-          />
+        <div
+          className="flex flex-row justify-center items-center"
+          key={image.url}
+        >
+          <div>
+            {" "}
+            <Image
+              src={image.url}
+              alt="GitHub Logo"
+              width={400}
+              height={600}
+              priority
+            />
+          </div>
+          <div>
+            <button
+              className="bg-red-500 ml-4 p-2 rounded-md text-white font-bold hover:bg-red-700 transition-all ease-in-out duration-300"
+              onClick={async () => {
+                await fetch(`/api/remove/route`, {
+                  method: "DELETE",
+                  body: image.url,
+                })
+              }}
+            >
+              Usuń
+            </button>
+          </div>
         </div>
       ))}
     </div>
