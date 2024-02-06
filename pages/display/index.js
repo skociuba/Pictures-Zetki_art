@@ -5,22 +5,22 @@ import Image from "next/image"
 const Importer = () => {
   const [images, setImages] = useState([])
 
-  useEffect(() => {
-    const fetchImages = async () => {
-      try {
-        const response = await fetch("/api/download/route")
+  const fetchImages = async () => {
+    try {
+      const response = await fetch("/api/download/route")
 
-        if (response.ok) {
-          const data = await response.json()
-          setImages(data)
-        } else {
-          console.error("Błąd pobierania listy obrazów:", response.statusText)
-        }
-      } catch (error) {
-        console.error("Błąd pobierania listy obrazów:", error)
+      if (response.ok) {
+        const data = await response.json()
+        setImages(data)
+      } else {
+        console.error("Błąd pobierania listy obrazów:", response.statusText)
       }
+    } catch (error) {
+      console.error("Błąd pobierania listy obrazów:", error)
     }
+  }
 
+  useEffect(() => {
     fetchImages()
   }, [])
 
@@ -45,10 +45,14 @@ const Importer = () => {
             <button
               className="bg-red-500 ml-4 p-2 rounded-md text-white font-bold hover:bg-red-700 transition-all ease-in-out duration-300"
               onClick={async () => {
-                await fetch(`/api/remove/route`, {
+                const response = await fetch(`/api/remove/route`, {
                   method: "DELETE",
                   body: image.url,
                 })
+                if (response.ok) {
+                  fetchImages()
+                }
+                return response
               }}
             >
               Usuń
