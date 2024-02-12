@@ -34,7 +34,12 @@ export default function LoginPage() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          style={{ width: "100%", padding: "10px", marginTop: "5px" }}
+          style={{
+            width: "100%",
+            padding: "10px",
+            marginTop: "5px",
+            border: "1px solid #000",
+          }}
         />
       </label>
       <label style={{ marginBottom: "10px" }}>
@@ -44,7 +49,12 @@ export default function LoginPage() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
-          style={{ width: "100%", padding: "10px", marginTop: "5px" }}
+          style={{
+            width: "100%",
+            padding: "10px",
+            marginTop: "5px",
+            border: "1px solid #000",
+          }}
         />
       </label>
       <button

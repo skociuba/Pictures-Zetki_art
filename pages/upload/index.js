@@ -44,7 +44,7 @@ export default function AvatarUploadPage() {
               <input name="file" ref={inputFileRef} type="file" required />
               <button
                 type="submit"
-                className="bg-blue-500 ml-4 p-2 rounded-md text-white font-bold hover:bg-blue-700 transition-all ease-in-out duration-300"
+                className="mt-5 bg-blue-500 mx-4 p-2 rounded-md text-white font-bold hover:bg-blue-700 transition-all ease-in-out duration-300"
               >
                 Upload
               </button>
@@ -58,7 +58,7 @@ export default function AvatarUploadPage() {
         )}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
           <Link href="/display">
-            <button className="mt-5 bg-blue-500 ml-4 p-2 rounded-md text-white font-bold hover:bg-blue-700 transition-all ease-in-out duration-300">
+            <button className="mt-5 bg-blue-500 mx-4 p-2 rounded-md text-white font-bold hover:bg-blue-700 transition-all ease-in-out duration-300">
               Go to Display and Remove
             </button>
           </Link>
