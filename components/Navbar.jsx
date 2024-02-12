@@ -1,11 +1,16 @@
 import Link from "next/link"
 import React, { useState, useEffect } from "react"
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai"
-
+import { useRouter } from "next/router"
 const Navbar = () => {
   const [nav, setNav] = useState(false)
   const [color, setColor] = useState("transparent")
   const [textColor, setTextColor] = useState("white")
+  const router = useRouter()
+  const handleLogout = () => {
+    localStorage.removeItem("token")
+    router.push("/")
+  }
 
   const handleNav = () => {
     setNav(!nav)
@@ -43,15 +48,12 @@ const Navbar = () => {
           <li className="p-4">
             <Link href="/#gallery">Gallery</Link>
           </li>
-
           <li className="p-4">
             <Link href="/contact">Contact</Link>
           </li>
+          <button onClick={handleLogout}>Log out</button>
           <li className="p-4">
-            <Link href="/upload">Upload</Link>
-          </li>
-          <li className="p-4">
-            <Link href="/display">Remove</Link>
+            <Link href="/login">Login</Link>
           </li>
         </ul>
 

@@ -1,10 +1,17 @@
 "use client"
-import { useState, useEffect } from "react"
+import { useState, useRef, useEffect } from "react"
+import { useRouter } from "next/router"
 import Image from "next/image"
 import Hero from "../../components/Hero"
 const Importer = () => {
   const [images, setImages] = useState([])
+  const router = useRouter()
 
+  useEffect(() => {
+    if (localStorage.getItem("token") === null) {
+      router.push("/")
+    }
+  }, [])
   const fetchImages = async () => {
     try {
       const response = await fetch("/api/download/route")
