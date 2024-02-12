@@ -26,26 +26,44 @@ export default function LoginPage() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="mt-20">
-      <label>
+    <form
+      onSubmit={handleSubmit}
+      className="mt-20 mx-44"
+    
+    >
+      <label style={{ marginBottom: "10px" }}>
         Email:
         <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
+          style={{ width: "100%", padding: "10px", marginTop: "5px" }}
         />
       </label>
-      <label>
+      <label style={{ marginBottom: "10px" }}>
         Password:
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
+          style={{ width: "100%", padding: "10px", marginTop: "5px" }}
         />
       </label>
-      <button type="submit">Log in</button>
+      <button
+        type="submit"
+        style={{
+          padding: "10px",
+          marginTop: "10px",
+          backgroundColor: "#0070f3",
+          color: "white",
+          border: "none",
+          cursor: "pointer",
+        }}
+      >
+        Log in
+      </button>
     </form>
   )
 }

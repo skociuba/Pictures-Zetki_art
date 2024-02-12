@@ -1,7 +1,8 @@
 "use client"
-import { useState, useRef, useEffect } from "react"
+import { useState, useEffect } from "react"
 import { useRouter } from "next/router"
 import Image from "next/image"
+import Link from "next/link"
 import Hero from "../../components/Hero"
 const Importer = () => {
   const [images, setImages] = useState([])
@@ -34,6 +35,9 @@ const Importer = () => {
   return (
     <div>
       <Hero heading="Projects" message="Remove project" />
+      <button className="p-4 bg-blue-500 text-white hover:bg-blue-700">
+        <Link href="/upload">Upload Page</Link>
+      </button>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 m-4">
         {images?.map((image) => (
           <div
