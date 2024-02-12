@@ -26,11 +26,7 @@ export default function LoginPage() {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="mt-20 mx-44"
-    
-    >
+    <form onSubmit={handleSubmit} className="mt-20 mx-3 lg:mx-44">
       <label style={{ marginBottom: "10px" }}>
         Email:
         <input
