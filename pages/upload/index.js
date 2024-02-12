@@ -56,9 +56,13 @@ export default function AvatarUploadPage() {
             Blob url: <a href={blob.url}>{blob.url}</a>
           </div>
         )}
-        <button className="p-4 bg-blue-500 text-white hover:bg-blue-700">
-          <Link href="/display">Display and Remove</Link>
-        </button>
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
+          <Link href="/display">
+            <button className="mt-5 bg-blue-500 ml-4 p-2 rounded-md text-white font-bold hover:bg-blue-700 transition-all ease-in-out duration-300">
+              Go to Display and Remove
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   )

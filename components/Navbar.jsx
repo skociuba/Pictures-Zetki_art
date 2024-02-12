@@ -92,17 +92,20 @@ const Navbar = () => {
             >
               <Link href="/contact">Contact</Link>
             </li>
+            <button
+              className="p-4 text-4xl hover:text-gray-500"
+              onClick={() => {
+                handleLogout()
+                handleNav()
+              }}
+            >
+              Log out
+            </button>
             <li
               onClick={handleNav}
               className="p-4 text-4xl hover:text-gray-500"
             >
-              <Link href="/upload">Upload</Link>
-            </li>
-            <li
-              onClick={handleNav}
-              className="p-4 text-4xl hover:text-gray-500"
-            >
-              <Link href="/display">Remove</Link>
+              <Link href="/login">Login</Link>
             </li>
           </ul>
         </div>
