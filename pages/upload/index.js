@@ -1,13 +1,13 @@
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef, useLayoutEffect } from "react"
 import { useRouter } from "next/router"
 import Hero from "../../components/Hero"
-import Link from "next/link"
+
 export default function AvatarUploadPage() {
   const router = useRouter()
   const inputFileRef = useRef(null)
   const [blob, setBlob] = useState(null)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (localStorage.getItem("token") === null) {
       router.push("/")
     }
@@ -56,13 +56,6 @@ export default function AvatarUploadPage() {
             Blob url: <a href={blob.url}>{blob.url}</a>
           </div>
         )}
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
-          <Link href="/display">
-            <button className="mt-5 bg-blue-500 mx-4 p-2 rounded-md text-white font-bold hover:bg-blue-700 transition-all ease-in-out duration-300">
-              Go to Display and Remove
-            </button>
-          </Link>
-        </div>
       </div>
     </div>
   )

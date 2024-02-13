@@ -6,7 +6,9 @@ const Navbar = () => {
   const [nav, setNav] = useState(false)
   const [color, setColor] = useState("transparent")
   const [textColor, setTextColor] = useState("white")
+  const [token, setToken] = useState("white")
   const router = useRouter()
+
   const handleLogout = () => {
     localStorage.removeItem("token")
     router.push("/")
@@ -15,6 +17,13 @@ const Navbar = () => {
   const handleNav = () => {
     setNav(!nav)
   }
+
+  useEffect(() => {
+    const getTokenFromLocalStorage = localStorage.getItem("token")
+      ? JSON.parse(localStorage.getItem("token"))
+      : null
+    setToken(getTokenFromLocalStorage)
+  }, [handleLogout])
 
   useEffect(() => {
     const changeColor = () => {
@@ -51,10 +60,23 @@ const Navbar = () => {
           <li className="p-4">
             <Link href="/contact">Contact</Link>
           </li>
-          <button onClick={handleLogout}>Log out</button>
-          <li className="p-4">
-            <Link href="/login">Login</Link>
-          </li>
+          {token ? (
+            <>
+              <li className="p-4">
+                <Link href="/upload">Upload</Link>
+              </li>
+              <li className="p-4">
+                <Link href="/display">Display and remove</Link>
+              </li>
+            </>
+          ) : null}
+          {!token ? (
+            <li className="p-4">
+              <Link href="/login">Login</Link>
+            </li>
+          ) : (
+            <button onClick={handleLogout}>Log out</button>
+          )}
         </ul>
 
         {/* Mobile Button */}
@@ -92,21 +114,40 @@ const Navbar = () => {
             >
               <Link href="/contact">Contact</Link>
             </li>
-            <button
-              className="p-4 text-4xl hover:text-gray-500"
-              onClick={() => {
-                handleLogout()
-                handleNav()
-              }}
-            >
-              Log out
-            </button>
-            <li
-              onClick={handleNav}
-              className="p-4 text-4xl hover:text-gray-500"
-            >
-              <Link href="/login">Login</Link>
-            </li>
+            {token ? (
+              <>
+                <li
+                  onClick={handleNav}
+                  className="p-4 text-4xl hover:text-gray-500"
+                >
+                  <Link href="/upload">Upload</Link>
+                </li>
+                <li
+                  onClick={handleNav}
+                  className="p-4 text-4xl hover:text-gray-500"
+                >
+                  <Link href="/display">Display and remove</Link>
+                </li>
+              </>
+            ) : null}
+            {!token ? (
+              <li
+                onClick={handleNav}
+                className="p-4 text-4xl hover:text-gray-500"
+              >
+                <Link href="/login">Login</Link>
+              </li>
+            ) : (
+              <button
+                className="p-4 text-4xl hover:text-gray-500"
+                onClick={() => {
+                  handleLogout()
+                  handleNav()
+                }}
+              >
+                Log out
+              </button>
+            )}
           </ul>
         </div>
       </div>
