@@ -26,53 +26,72 @@ export default function LoginPage() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="mt-20 mx-3 lg:mx-44">
-      <div className="flex justify-center text-red-700 text-bold mb-3">
-        Panel wyłącznie dla administratora !
+    <div>
+      <div className="mt-20 ml-4 lg:ml-44">
+        <button
+          style={{
+            padding: "10px",
+            marginTop: "10px",
+            backgroundColor: "#0070f3",
+            color: "white",
+            border: "none",
+            cursor: "pointer",
+          }}
+          onClick={() => {
+            router.push("/#gallery")
+          }}
+        >
+          Back to Gallery
+        </button>
       </div>
-      <label style={{ marginBottom: "10px" }}>
-        Email:
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
+      <form onSubmit={handleSubmit} className="mt-5 mx-3 lg:mx-44">
+        <div className="flex justify-center text-red-700 text-bold mb-3">
+          Panel wyłącznie dla administratora !
+        </div>
+        <label style={{ marginBottom: "10px" }}>
+          Email:
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            style={{
+              width: "100%",
+              padding: "10px",
+              marginTop: "5px",
+              border: "1px solid #000",
+            }}
+          />
+        </label>
+        <label style={{ marginBottom: "10px" }}>
+          Password:
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            style={{
+              width: "100%",
+              padding: "10px",
+              marginTop: "5px",
+              border: "1px solid #000",
+            }}
+          />
+        </label>
+        <button
+          type="submit"
           style={{
-            width: "100%",
             padding: "10px",
-            marginTop: "5px",
-            border: "1px solid #000",
+            marginTop: "10px",
+            backgroundColor: "#0070f3",
+            color: "white",
+            border: "none",
+            cursor: "pointer",
           }}
-        />
-      </label>
-      <label style={{ marginBottom: "10px" }}>
-        Password:
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          style={{
-            width: "100%",
-            padding: "10px",
-            marginTop: "5px",
-            border: "1px solid #000",
-          }}
-        />
-      </label>
-      <button
-        type="submit"
-        style={{
-          padding: "10px",
-          marginTop: "10px",
-          backgroundColor: "#0070f3",
-          color: "white",
-          border: "none",
-          cursor: "pointer",
-        }}
-      >
-        Log in
-      </button>
-    </form>
+        >
+          Log in
+        </button>
+      </form>
+    </div>
   )
 }
