@@ -27,6 +27,9 @@ export default function LoginPage() {
 
   return (
     <form onSubmit={handleSubmit} className="mt-20 mx-3 lg:mx-44">
+      <div className="flex justify-center text-red-700 text-bold mb-3">
+        Panel wyłącznie dla administratora !
+      </div>
       <label style={{ marginBottom: "10px" }}>
         Email:
         <input
